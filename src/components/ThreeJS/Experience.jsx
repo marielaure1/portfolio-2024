@@ -1,12 +1,14 @@
-import { OrbitControls, PointerLockControls, useGLTF } from '@react-three/drei'
+import { OrbitControls, PointerLockControls, FirstPersonControls, useGLTF, Environment } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import {useLoader, useThree, useFrame} from "@react-three/fiber"
 import Player from "@/components/ThreeJS/player/Player.jsx"
-// import Floor from './Meshes/Floor.jsx';
 import useExperience from '@/components/ThreeJS/Experience.hook.jsx';
 import useLeva from '@/components/ThreeJS/debug/useLeva.jsx';
 // import useObjectToArray from '@/hook/useObjectToArray.jsx';
 import Lights from "@/components/ThreeJS/lights/Lights.jsx";
+import Meshes from "@/components/ThreeJS/meshes/Meshes.jsx";
+import { useTrimesh } from '@react-three/cannon';
+import {useEffect, useRef} from "react";
 
 export default function Experience(props)
 {
@@ -14,21 +16,19 @@ export default function Experience(props)
 	const { 
     PlayerDatas, 
     PerfDatas, 
-    Floor01Datas
+    // Floor01Datas
   } = useLeva();
 
 	const {
-		nodes, 
-		materials, 
-		Floor01Ref, 
-		Floor02Ref, 
-		Stairs01Ref
+		gallery
+		// Floor01Ref, 
+		// Floor02Ref, 
+		// Stairs01Ref
 	} = useExperience();
 
-  
+  console.log(gallery);
 
-  // console.log(nodes);
-	return <>
+return <>
 
         <Perf 
         position={PerfDatas.position}
@@ -36,28 +36,31 @@ export default function Experience(props)
         />
 
         <OrbitControls makeDefault />
-        <PointerLockControls  selector="#button"/>
+        {/* <FirstPersonControls 
+        lookSpeed={0.06} 
+        movementSpeed={10} 
+        // autoForward={false} 
+        mouseDragOn={true}
+        // activeLook={false}
+        verticalMax={Math.PI / 5}
+        verticalMin={-Math.PI / 3}
+        /> */}
+        {/* <PointerLockControls  selector="#button"/> */}
 
         <Lights/>
-    
+        <axesHelper args={[5]} />
+
+        <Environment files="spiaggia_di_mondello_4k.exr" background />
+
+        <Meshes scene={gallery.scene} nodes={gallery.nodes} materials={gallery.materials}  />
+
         {/* <Player 
-		controls 
-		position={PlayerDatas.scale} 
-		args={[1]} 
-		scale={PlayerDatas.scale} 
-		color="yellow" 
-		/> */}
-
-     
-
-        {/* <Floor 
-            rotation={useObjectToArray(FloorControls01.rotation)} 
-            position={useObjectToArray(FloorControls01.position)} 
-            scale={useObjectToArray(FloorControls01.scale)} 
-            // alphaMap={FloorControls01.alphaMap} 
-            // visible={FloorControls01.visible} 
+        controls 
+        position={PlayerDatas.position} 
+        args={[10, 10, 10]} 
+        scale={[1]} 
+        color="yellow" 
         /> */}
-
 
     </>
 }

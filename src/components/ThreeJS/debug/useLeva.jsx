@@ -26,9 +26,9 @@ export default function useLeva(){
             step: 0.01
         },
         position: {
-            value: [1, 1, 1],
-            min: -10,
-            max: 10,
+            value: [70, 1, 70],
+            min: -100,
+            max: 100,
             step: 0.01
         }
     }, 

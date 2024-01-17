@@ -15,7 +15,7 @@ export default function ThreeJS(){
             fov: 45,
             near: 0.1,
             far: 1000,
-            position: [ - 4, 20, 100 ]
+            position: [ 70, 10, 70 ]
         } }
         >
             <Physics gravity={[0, -9.82, 0]}>

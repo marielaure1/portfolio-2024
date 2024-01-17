@@ -6,10 +6,17 @@ export default function Player(props) {
 
   return (
     <group>
-      <mesh castShadow position={props.position} ref={ref} scale={props.scale}>
+      <mesh 
+      castShadow 
+      position={props.position} 
+      scale={props.scale}
+      ref={ref} 
+      // scale={props.scale}
+      >
+        {/* <boxGeometry args={props.args} /> */}
         <sphereGeometry args={props.args} />
         <meshStandardMaterial color="#FFFF00" />
       </mesh>
     </group>
   );
-};
+}
