@@ -1,4 +1,5 @@
 import { useTrimesh, useCompoundBody } from '@react-three/cannon';
+import * as THREE from 'three';
 
 const listInclude = [
   "718b85bb-8848-433c-9f2b-e848f5e2f60e",
@@ -8,12 +9,26 @@ const listInclude = [
   "e45a0e29-de79-4402-bf39-228b50176221"
 ];
 
-
 function createMesh(mesh, index) {
+  if (mesh.geometry) {
+    // Créez une nouvelle instance de Vector3 pour stocker la position mondiale
+    const worldPosition = new THREE.Vector3();
+    
+    // Obtenez la position mondiale de la mesh
+    mesh.getWorldPosition(worldPosition);
 
-  if(mesh.geometry){
+    // Vous pouvez également obtenir la rotation mondiale de la mesh si nécessaire
+    const worldRotation = new THREE.Euler();
+    mesh.getWorldQuaternion(worldRotation);
 
-    // console.log(mesh.name);
+    const worldScale = new THREE.Vector3();
+    
+    // Obtenez la position mondiale de la mesh
+    mesh.getWorldScale(worldScale);
+
+    // Vous n'avez pas besoin de la mise à l'échelle ici car elle est déjà récupérée
+    // avec la méthode getWorldScale() plus bas dans le code.
+
     const [ref] = useTrimesh(() => ({
       type: 'Static',
       mass: mesh?.name?.includes('Floor') || mesh?.name?.includes('Wall') ? 0 : 1,
@@ -21,13 +36,11 @@ function createMesh(mesh, index) {
         mesh?.geometry?.attributes?.position?.array,
         mesh?.geometry?.index?.array,
       ],
-      position: [mesh.position.x, mesh.position.y, mesh.position.z],
-      rotation: [mesh.rotation._x, mesh.rotation._y, mesh.rotation._z],
-      scale: [mesh.scale.x, mesh.scale.y, mesh.scale.z],
+      position: [worldPosition.x, worldPosition.y, worldPosition.z],
+      rotation: [worldRotation.x, worldRotation.y, worldRotation.z],
+      scale: [worldScale.x, worldScale.y, worldScale.z],
     }));
-  
-      
-    // console.log(ref);
+    
 
     return (
       <mesh
@@ -36,10 +49,10 @@ function createMesh(mesh, index) {
         name={mesh?.name}
         castShadow
         receiveShadow
-        position={mesh?.position}
+        position={worldPosition}
         geometry={mesh?.geometry}
-        scale={mesh?.scale}
-        rotation={mesh?.rotation}
+        scale={worldScale}
+        rotation={worldRotation}
         material={mesh?.material}
       />
     );
@@ -50,33 +63,16 @@ export default function Structure({ scene }) {
 
   return (
     <>
-      {Object.values(scene.children).filter((mesh) => mesh.name.includes("Suspension")).map((mesh, index) => {
+      {Object.values(scene.children).map((mesh, index) => {
 
         if(!mesh.isMesh && mesh.isObject3D) { 
 
-          // const [ref] = useTrimesh(() => ({
-          //   type: 'Static',
-          //   mass: mesh?.name?.includes('Floor') || mesh?.name?.includes('Wall') ? 0 : 1,
-          //   args: [
-          //     mesh?.geometry?.attributes?.position?.array,
-          //     mesh?.geometry?.index?.array,
-          //   ],
-          //   position: [mesh.position.x, mesh.position.y, mesh.position.z],
-          //   rotation: [mesh.rotation._x, mesh.rotation._y, mesh.rotation._z],
-          //   scale: [mesh.scale.x, mesh.scale.y, mesh.scale.z],
-          // }));
-
-          // console.log(mesh);
           return (
             <group 
             key={index}
-            // ref={ref} 
-            position={mesh?.position} 
-            scale={mesh?.scale} 
-            rotation={mesh?.rotation}
             >
               
-              {mesh.children.map((mesh2, index1) => {
+              {mesh.children.filter((mesh2) => mesh2.geometry && mesh2.geometry.attributes.position != NaN &&  mesh2.geometry.index != null ? true : false).map((mesh2, index1) => {
       
                 return createMesh(mesh2, index1);
               })}
@@ -91,5 +87,3 @@ export default function Structure({ scene }) {
     </>
   );
 }
-
-// .filter((mesh) => mesh.geometry && mesh.geometry.attributes.position != NaN &&  mesh.geometry.index != null ? true : false)
