@@ -1,16 +1,13 @@
 import { useTrimesh, useCompoundBody } from '@react-three/cannon';
 import * as THREE from 'three';
 
-const listInclude = [
-  "718b85bb-8848-433c-9f2b-e848f5e2f60e",
-  "593d9087-fd03-419b-8da7-d09a52061428",
-  "a4198582-042e-49c8-b616-9631aa2209ac",
-  "acd0c505-d6f3-4b70-9545-0ffee78b9d7a",
-  "e45a0e29-de79-4402-bf39-228b50176221"
-];
-
 function createMesh(mesh, index) {
   if (mesh.geometry) {
+
+    let listMeshesToExclude = ["Grass", "Rope"];
+    let listMeshesToInclure = ["Structure", "Hall", "Room01", "Room02", "Room03"];
+    let ref = null;
+
     // Créez une nouvelle instance de Vector3 pour stocker la position mondiale
     const worldPosition = new THREE.Vector3();
     
@@ -26,26 +23,30 @@ function createMesh(mesh, index) {
     // Obtenez la position mondiale de la mesh
     mesh.getWorldScale(worldScale);
 
-    // Vous n'avez pas besoin de la mise à l'échelle ici car elle est déjà récupérée
+    // Vous n'avez pas besoin de la mise à l'échelle ici car ellle est déjà récupérée
     // avec la méthode getWorldScale() plus bas dans le code.
 
-    const [ref] = useTrimesh(() => ({
-      type: 'Static',
-      mass: mesh?.name?.includes('Floor') || mesh?.name?.includes('Wall') ? 0 : 1,
-      args: [
-        mesh?.geometry?.attributes?.position?.array,
-        mesh?.geometry?.index?.array,
-      ],
-      position: [worldPosition.x, worldPosition.y, worldPosition.z],
-      rotation: [worldRotation.x, worldRotation.y, worldRotation.z],
-      scale: [worldScale.x, worldScale.y, worldScale.z],
-    }));
+    if(listMeshesToInclure.some((keyword) => mesh.name.toLowerCase().trim().includes(keyword.toLowerCase().trim())) && !listMeshesToExclude.some((keyword) => mesh.name.toLowerCase().trim().includes(keyword.toLowerCase().trim()))){
+      let [ref] = useTrimesh(() => ({
+        type: 'Static',
+        mass: mesh?.name?.includes('Floor') || mesh?.name?.includes('Wall') ? 0 : 1,
+        args: [
+          mesh?.geometry?.attributes?.position?.array,
+          mesh?.geometry?.index?.array,
+        ],
+        position: [worldPosition.x, worldPosition.y, worldPosition.z],
+        rotation: [worldRotation.x, worldRotation.y, worldRotation.z],
+        scale: [worldScale.x, worldScale.y, worldScale.z],
+      }));
+    }
+
+    
     
 
     return (
       <mesh
         key={index}
-        ref={ref}
+        ref={ref == null ? ref : null}
         name={mesh?.name}
         castShadow
         receiveShadow
