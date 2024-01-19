@@ -40,9 +40,6 @@ function createMesh(mesh, index) {
       }));
     }
 
-    
-    
-
     return (
       <mesh
         key={index}
@@ -64,7 +61,7 @@ export default function Structure({ scene }) {
 
   return (
     <>
-      {Object.values(scene.children).map((mesh, index) => {
+      {Object.values(scene.children).filter((mesh) => !mesh.name.includes("Grass")).map((mesh, index) => {
 
         if(!mesh.isMesh && mesh.isObject3D) { 
 
