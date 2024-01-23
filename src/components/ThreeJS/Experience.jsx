@@ -26,16 +26,18 @@ export default function Experience(props)
 		// Stairs01Ref
 	} = useExperience();
 
+  const pointerLockControls = useRef();
+
   console.log(gallery);
 
 return <>
 
-        <Perf 
+        {/* <Perf 
         position={PerfDatas.position}
         visible={PerfDatas.visible}
-        />
+        /> */}
 
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         {/* <FirstPersonControls 
         lookSpeed={0.06} 
         movementSpeed={10} 
@@ -45,22 +47,23 @@ return <>
         verticalMax={Math.PI / 5}
         verticalMin={-Math.PI / 3}
         /> */}
-        {/* <PointerLockControls  selector="#button"/> */}
+        
 
         <Lights/>
         <axesHelper args={[5]} />
 
         <Environment files="spiaggia_di_mondello_4k.exr" background />
+        <PointerLockControls  selector="#button" ref={pointerLockControls}/>
+        <Meshes scene={gallery.scene} nodes={gallery.nodes} materials={gallery.materials} pointerLockControls={pointerLockControls}  />
 
-        <Meshes scene={gallery.scene} nodes={gallery.nodes} materials={gallery.materials}  />
-
-        {/* <Player 
+        <Player 
         controls 
         position={PlayerDatas.position} 
+        rotation={PlayerDatas.rotation} 
         args={[10, 10, 10]} 
         scale={[1]} 
         color="yellow" 
-        /> */}
+        />
 
     </>
 }

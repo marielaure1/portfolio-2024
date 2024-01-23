@@ -1,0 +1,23 @@
+%btn{
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+%btn-border{
+    @extend %btn;
+    background: transparent;
+    border: 1px solid;
+}
+
+.btn-border-white{
+    @extend %btn-border;
+    border-color: $cl-white;
+    color: $cl-white;
+}
+
+.btn-border-black{
+    @extend %btn-border;
+    border-color: $cl-black;
+    color: $cl-black;
+}

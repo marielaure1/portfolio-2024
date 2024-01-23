@@ -1,14 +1,14 @@
-import HtmlContent from '@/components/HtmlContent.jsx';
-import ThreeJS from '@/components/ThreeJS.jsx';
+import Nav from "@/components/Html/Layouts/Nav.jsx";
+import Footer from "@/components/Html/Layouts/Footer.jsx";
+import { Outlet } from "react-router-dom";
 
-function App() {
+export default function App() {
 
   return (
     <>
-      <ThreeJS/>
-      <HtmlContent/>
+      <Nav/>
+          <Outlet/>
+      <Footer/>
     </>
   )
 }
-
-export default App

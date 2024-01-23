@@ -1,0 +1,100 @@
+.menu{
+    padding: 20px 5vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    width: 100%;
+
+    &-part{
+        width: calc(100% / 3);
+        display: flex;
+        align-items: center;
+
+        &-btn{
+            height: 30px;
+
+            %btn-line{
+                width: 40px;
+                height: 2px;
+                background-color: $cl-black;
+                display: block;
+                border-radius: 1px;
+                transform-origin: 0% 0%;
+                transition: transform 0.5s;
+            }
+
+            &-line1{
+                @extend %btn-line;
+                margin-top: 5px;
+            }
+    
+    
+            &-line2{
+                @extend %btn-line;
+                margin-top: 8px;
+            }
+    
+            &.active{
+                .menu-part-btn-line1{
+                    @extend %btn-line;
+                    transform: rotate(-15deg) translateY(11px);
+                }
+        
+        
+                .menu-part-btn-line2{
+                    @extend %btn-line;
+                    transform: rotate(15deg) translateY(-10px);
+                }
+            }
+        }
+    
+        &-audio{
+            border: 1px solid $cl-black;
+            border-radius: 24px;
+            height: 48px;
+            width: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            %audio{
+                font-size: 24px;
+                transition: opacity 0.5s;
+                position: absolute;
+            }
+
+            &-on{
+                @extend %audio;
+                opacity: 0;
+            }
+
+            &-off{
+                @extend %audio;
+                opacity: 1;
+            }
+
+            &.active{
+                .menu-part-audio-on{
+                    opacity: 1;
+                }
+
+                .menu-part-audio-off{
+                    opacity: 0;
+                }
+            }
+        }
+
+        &:nth-child(2){
+            display: flex;
+            justify-content: center;
+        }
+
+        &:nth-child(3){
+            display: flex;
+            justify-content: end;
+        }
+    }
+}

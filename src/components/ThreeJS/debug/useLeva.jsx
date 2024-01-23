@@ -30,7 +30,13 @@ export default function useLeva(){
             min: -100,
             max: 100,
             step: 0.01
-        }
+        },
+        rotation: {
+            value: [1, 1, 1],
+            min: -10,
+            max: 10,
+            step: 0.01
+        },
     }, 
     {   
         collapsed: true 

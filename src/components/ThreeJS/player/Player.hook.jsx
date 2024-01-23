@@ -17,16 +17,8 @@ export default function usePlayer(props) {
     mass: 1,
     type: 'Dynamic',
     args: [10, 10, 10],
-    position: props.position
+    position: props.position,
   }));
-
-  // const [ref, api] = useBox(() => ({
-  //   mass: 1,
-  //   type: 'Dynamic',
-  //   args: [1, 2, 1], // Ajustez les dimensions de la boîte ici (width, height, depth)
-  //   position: [props.position[0], props.position[1] + 40 - 1, props.position[2]],
-  //   rotation: [0, 0, 0] // Ajustez le centre de masse
-  // }));
 
   const { forward, backward, left, right, jump } = useMovement();
   const velocity = useRef([0, 0, 0]);
@@ -43,9 +35,12 @@ export default function usePlayer(props) {
 
   useFrame(() => {
     ref.current.getWorldPosition(camera.position);
+    // ref.current.getWorldQuaternion(camera.rotation);
 
     // Ajoutez une valeur à la position Y de la caméra pour la soulever
     camera.position.y += 15;
+    // camera.rotation.y = -4.7;
+    // camera
 
     frontVector.set(0, 0, Number(backward) - Number(forward));
     sideVector.set(Number(left) - Number(right), 0, 0);

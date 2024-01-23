@@ -1,19 +1,30 @@
-import Structure from "@/components/ThreeJS/meshes/Structure.jsx";
-import Hall from "@/components/ThreeJS/meshes/Hall.jsx";
-import Room01 from "@/components/ThreeJS/meshes/Room01.jsx";
-import Room02 from "@/components/ThreeJS/meshes/Room02.jsx";
-import Room03 from "@/components/ThreeJS/meshes/Room03.jsx";
+import useMeshes from "@/components/ThreeJS/meshes/Meshes.hook.jsx";
 
-export default function Meshes({nodes, materials, scene}) {
+export default function Meshes({nodes, materials, scene, pointerLockControls}) {
 
   return (
    <>
-   <Structure nodes={nodes} scene={scene} materials={materials}/>
-   {/* <Room02 nodes={nodes} materials={materials}/> */}
-   {/* <Hall nodes={nodes} materials={materials}/>
-   <Room01 nodes={nodes} materials={materials}/>
+   {Object.values(scene.children).filter((mesh) => !mesh.name.includes("Grass")).map((mesh, index) => {
 
-   <Room03 nodes={nodes} materials={materials}/> */}
+      if(!mesh.isMesh && mesh.isObject3D) { 
+
+        return (
+          <group 
+          key={index}
+          >
+            
+            {mesh.children.filter((mesh2) => mesh2.geometry && mesh2.geometry.attributes.position != NaN &&  mesh2.geometry.index != null ? true : false).map((mesh2, index1) => {
+
+              return useMeshes.createMesh(mesh2, index1, pointerLockControls);
+            })}
+          </group>
+        )
+      } else if (mesh.isMesh && mesh.isObject3D) {
+        return useMeshes.createMesh(mesh, index, pointerLockControls);
+      } else {
+        return null;
+      }
+    })}
    </>
   )
 }
