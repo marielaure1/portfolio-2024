@@ -6,17 +6,27 @@ import Skills from "@/components/Html/Home/Skills";
 import Portfolio from "@/components/Html/Home/Portfolio";
 import Contact from "@/components/Html/Home/Contact";
 
+import IMG from "@/assets/images/1.jpg"
+// import "@/components/3D/test/app.js"
+
+
+
 export default function Home(){
 
     return(
         <>
-            <Background/>
+            {/* <Background/> */}
             <Header/>
             <About/>
-            <Services/>
+            {/* <div className="item__image">
+                <img src={IMG} className="js-image" alt="Some image" style={{ width: "500px" }}/>
+            </div>
+            
+	<div id="container"></div> */}
+            {/* <Services/>
             <Skills/>
             <Portfolio/>
-            <Contact/>
+            <Contact/> */}
         </>
     )
 }

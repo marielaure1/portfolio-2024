@@ -1,6 +1,7 @@
 body{
     font-family: $ff-primary;
     line-height: 1.2;
+    scroll-behavior: smooth;
     // color: $cl-white;
 }
 
@@ -212,3 +213,4 @@ section{
       opacity: 0.7;
     }
   }
+

@@ -1,9 +1,9 @@
 
 import { Canvas } from '@react-three/fiber';
-import Experience from '@/components/ThreeJS/Experience.jsx'
+import Experience from '@/components/3D/Experience.jsx'
 import { Physics, Debug } from '@react-three/cannon';
 import { Leva  } from "leva";
-import useLeva from '@/components/ThreeJS/debug/useLeva.jsx';
+import useLeva from '@/components/3D/debug/useLeva.jsx';
 
 export default function ThreeJS(){
     const mode = "dev";
@@ -14,7 +14,7 @@ export default function ThreeJS(){
         } = useLeva();
     return(
         <>
-            {/* <Leva collapsed /> */}
+            <Leva collapsed />
 
             <Canvas
                 shadows
@@ -29,9 +29,9 @@ export default function ThreeJS(){
                 className='canvas'
             >
                 <Physics gravity={[0, -9.82, 0]}>
-                    {/* <Debug color="red" scale={1.1}> */}
+                    <Debug color="red" scale={1.1}>
                         <Experience />
-                    {/* </Debug> */}
+                    </Debug>
                 </Physics>
             
             </Canvas>

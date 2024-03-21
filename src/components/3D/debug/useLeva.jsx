@@ -23,19 +23,19 @@ export default function useLeva(){
             value: [1, 1, 1],
             min: -10,
             max: 10,
-            step: 0.01
+            step: 0.1
         },
         position: {
-            value: [70, 1, 70],
+            value: [70, 20, 70],
             min: -100,
             max: 100,
-            step: 0.01
+            step: 0.1
         },
         rotation: {
             value: [1, 1, 1],
             min: -10,
             max: 10,
-            step: 0.01
+            step: 0.1
         },
     }, 
     {   

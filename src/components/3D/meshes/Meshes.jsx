@@ -1,4 +1,4 @@
-import useMeshes from "@/components/ThreeJS/meshes/Meshes.hook.jsx";
+import useMeshes from "@/components/3D/meshes/Meshes.hook.jsx";
 
 export default function Meshes({nodes, materials, scene, pointerLockControls}) {
 
