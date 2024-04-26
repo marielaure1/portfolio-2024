@@ -1,5 +1,19 @@
 .about{
     padding: 50px 5vw 50px calc(5vw + $pl);
+    height: 40vh;
+    width: 100%;
+    background: url('../src/assets/images/Union.svg') center/cover;
+    border-top: 1px solid $cl-black;
+    border-bottom: 1px solid $cl-black;
+    position: relative;
+
+    &-shape1{
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 20px;
+    }
 
     &-container{
         width: 100%;

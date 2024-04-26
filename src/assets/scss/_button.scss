@@ -4,10 +4,64 @@
     padding: 10px;
 }
 
+%btn-double{
+    display: flex;
+    height: 40px;
+
+    & .btn-text{
+        border-radius: 30px;
+        height: 100%;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        transition: ease-out .5s .2s border-radius;
+    }
+
+    & .btn-icons{
+        border-radius: 30px;
+        height: 100%;
+        width: 40px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -5px;
+        transition: ease-out .5s .2s border-radius, .5s margin-left;
+
+        &-icon{     
+            position: absolute;
+            transform: rotate(225deg);
+        }
+    }
+
+    &:hover{
+        & .btn-text{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    
+        & .btn-icons{
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: -2px;
+        }
+    }
+}
+
 %btn-border{
     @extend %btn;
     background: transparent;
     border: 1px solid;
+}
+
+.btn-black{
+    @extend %btn-double;
+    & .btn-text, & .btn-icons{
+        background-color: $cl-black;
+        color: $cl-white;
+    }
 }
 
 .btn-border-white{

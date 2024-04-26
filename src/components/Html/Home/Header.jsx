@@ -1,7 +1,7 @@
 import Button from "@/components/Html/Button/Button.jsx";
 import img from "@/assets/images/2.png";
-import icon1 from "@/assets/images/icon-1.svg";
-import icon2 from "@/assets/images/icon-2.svg";
+import shape1 from "@/assets/images/shape-1.svg";
+import shape2 from "@/assets/images/shape-2.svg";
 import {useEffect} from "react"
 // import {CrazyText} from "@/modules/crazy/Crazy.js"
 import "@/modules/crazy/Crazy.js"
@@ -9,6 +9,7 @@ import "@/modules/crazy/Crazy.js"
 // import SplitType from 'split-type'
 
 import Skills from "@/components/2D/Concave/Skills.jsx";
+// import Test from "@/components/2D/Concave/test.jsx";
 
 export default function Header(){
 
@@ -48,10 +49,10 @@ export default function Header(){
             <div className="header-left">
                 <h1 className="header-left-title crazy crazy-explode">
                     Développeuse 
-                    <span className="header-left-title-icon1"></span>
+                    <img src={shape2} alt="" className="header-left-title-shape1"/> <br/>
                     <strong className="header-left-title-thin">
-                        Web Fullstack et mobile
-                        <span className="header-left-title-icon2">*</span>
+                        Web Fullstack et <br/> mobile
+                    <img src={shape1} alt="" className="header-left-title-shape2"/>
                     </strong>
                     
                 </h1>
@@ -66,6 +67,12 @@ export default function Header(){
 
             <div className="header-right">
                 <img src={img} alt="" className="header-right-img"/>
+                <div className="header-right-container">
+                    <span className="header-right-container-scroll">Scroll</span>
+                    <span>ou</span>
+                    <Button className="btn-black" href="/">Contact</Button>
+
+                </div>
             </div>
 
             {/* <div className="header-top">

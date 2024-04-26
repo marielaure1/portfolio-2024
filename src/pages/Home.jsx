@@ -18,12 +18,13 @@ export default function Home(){
             {/* <Background/> */}
             <Header/>
             <About/>
+            <Services/>
             {/* <div className="item__image">
                 <img src={IMG} className="js-image" alt="Some image" style={{ width: "500px" }}/>
             </div>
             
 	<div id="container"></div> */}
-            {/* <Services/>
+            {/* 
             <Skills/>
             <Portfolio/>
             <Contact/> */}

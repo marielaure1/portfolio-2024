@@ -1,97 +1,57 @@
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import gsap from "gsap";
 import img from "@/assets/images/2.png";
-import { Icon } from '@iconify-icon/react';
-
-let projectsList = [
-    {
-        title: "Site Vitrine",
-        tags: ["React.js", "Node.js", "MongoDb.js"],
-        date: 2024,
-        image: img,
-        link: "/"
-    },
-    {
-        title: "Site Vitrine",
-        tags: ["React.js", "Node.js", "MongoDb.js"],
-        date: 2024,
-        image: img,
-        link: "/"
-    },
-    {
-        title: "Site Vitrine",
-        tags: ["React.js", "Node.js", "MongoDb.js"],
-        date: 2024,
-        image: img,
-        link: "/"
-    },
-    {
-        title: "Site Vitrine",
-        tags: ["React.js", "Node.js", "MongoDb.js"],
-        date: 2024,
-        image: img,
-        link: "/"
-    }
-]
 
 export default function Services(){
-    const [projects, setProjects] = useState(projectsList);
-
-    
 
     useEffect(() => {
-        let size = {
-            width: window.innerWidth
-        }
-
-     
-        // gsap
-        // .timeline()
-        // .from(".services-table-body", {
-        //   delay: 1,
-        //   duration: 0.85,
-        //   x: 25,
-        //   y: 125,
-        //   stagger: 0.095,
-        //   skewY: gsap.utils.wrap([-8, 8]),
-        //   ease: "expo.out",
-        // })
-        // .set(".services-table", { pointerEvents: "all" });
+        gsap
+        .timeline()
+        .set(".menu", { autoAlpha: 1 })
+        .from(".menu__item-innertext", {
+          delay: 1,
+          duration: 0.85,
+          x: 25,
+          y: 125,
+          stagger: 0.095,
+          skewY: gsap.utils.wrap([-8, 8]),
+          ease: "expo.out",
+        })
+        .set(".menu", { pointerEvents: "all" });
       
       gsap.defaults({
         duration: 0.55,
         ease: "expo.out",
       });
       
-      const menuItems = document.querySelectorAll(".services-table-body");
+      const menuItems = document.querySelectorAll(".menu__item");
 
-    //   let previousImageX = 0;
-    //   let previousImageY = 0;
+      let previousImageX = 0;
+      let previousImageY = 0;
       
       menuItems.forEach((item, i) => {
-        const imageWrapper = item.querySelector(".table-wrapper");
-        imageWrapper.style.width = size.width/ 4 + "px"
+        const imageWrapper = item.querySelector(".menu__item-image_wrapper");
         const imageWrapperBounds = imageWrapper.getBoundingClientRect();
         let itemBounds = item.getBoundingClientRect();
       
         const onMouseEnter = ({x, y}) => {
-            console.log(size.width);
-            console.log(size.width  / 5);
+            
+            
           gsap.set(imageWrapper, {
             scale: 0.8,
-            x: 750,
-            y: y - 50,
+            xPercent: 40,
+            y: 0,
             rotation: -15,
           });
-          gsap.to(imageWrapper, { opacity: 1, scale: 1, rotation: 0 });
+          gsap.to(imageWrapper, { opacity: 1, scale: 1, yPercent: 0, rotation: 0 });
         };
       
         const onMouseLeave = () => {
             if(i == 0){
                 gsap.to(imageWrapper, {
                     opacity: 0,
-                    // yPercent: -50,
-                    // xPercent: 25,
+                    yPercent: -50,
+                    xPercent: 25,
                     scale: 0.8,
                     rotation: -15,
                 });
@@ -99,7 +59,7 @@ export default function Services(){
                 gsap.to(imageWrapper, {
                     opacity: 0,
                     y: 0,
-                    // xPercent: 40,
+                    xPercent: 40,
                     scale: 0.8,
                     rotation: -15,
                 });
@@ -110,9 +70,9 @@ export default function Services(){
           let yOffset = itemBounds.top / imageWrapperBounds.height;
           yOffset = gsap.utils.mapRange(0, 1.5, -50, 50, yOffset);
           gsap.to(imageWrapper, {
-            // duration: 1.25,
-            // x: 600,
-            y: y - 60 *0.5,
+            duration: 1.25,
+            x: 600,
+            y: Math.abs(y - itemBounds.top) - imageWrapperBounds.height / 2 - yOffset,
           });
         };
       
@@ -129,53 +89,15 @@ export default function Services(){
     
     return(
         <section className="services">
-            <h2 className="services-title title-section">Portfolio</h2>
-            <div className="services-table">
-                <div className="services-table-head">
-                    <div className="services-table-head-cell">
-                        <span className="table-title">Titre</span>
-                    </div>
-                    <div className="services-table-head-cell">
-                        <span className="table-title">Tags</span>
-                    </div>
-                    <div className="services-table-head-cell">
-                        <span className="table-title">Date</span>
-                    </div>
-                    <div className="services-table-head-cell"></div>
-                </div>
-                {projects.map((project) => (
-                    <div className="services-table-body">
-                        <div className="services-table-body-cell">
-                            <span className="table-text">{project.title}</span>
-                        </div>
-                        <div className="services-table-body-cell">
-                        {project.tags.map((tag) => (
-                            <span className="tag">{tag}</span>
-                        ))}
-                        </div>
-                        <div className="services-table-body-cell">
-                            <span className="table-text">{project.date}</span>
-                            <div className="table-wrapper">
-                                <img className="table-wrapper-image" src={project.image} />
-                            </div>
-                        </div>
-                        <div className="services-table-body-cell table-action">
-                            <a href={project.link} target="_blank" className="btn-border-round">
-                                <Icon className="btn-icons-icon" icon="zondicons:arrow-left" />
-                            </a>
-                        </div>
-                    </div>
-                ))}
-            </div>
             {/* <div className="container">
                 <nav className="menu">
                     <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
+                        <div className="menu__item-image_wrapper">
+                            <div className="menu__item-image_inner">
+                            <img className="menu__item-image" src={img} />
+                            </div>
                         </div>
-                    </div>
-                    <span className="menu__item-text"
+                      <span className="menu__item-text"
                         ><span className="menu__item-innertext">Zinjao</span></span>
                     </div>
                     <div className="menu__item">

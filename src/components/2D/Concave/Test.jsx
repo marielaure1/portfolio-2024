@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 
-export default function useSkills() {
+const AnimationContainer = () => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const Engine = Matter.Engine;
@@ -41,14 +41,14 @@ export default function useSkills() {
         height: containerRef.current.clientHeight,
         wireframes: false,
         background: 'transparent',
-        showAxes: false,
-        showCollisions: false,
-        showDebug: false,
-        showBroadphase: false,
-        showBounds: false,
-        showVelocity: false,
-        showPositions: false,
-        showAngleIndicator: false,
+        showAxes: false, // Masquer les axes
+        showCollisions: false, // Masquer les collisions
+        showDebug: false, // Masquer le débogage
+        showBroadphase: false, // Masquer la zone de détection des collisions
+        showBounds: false, // Masquer les limites
+        showVelocity: false, // Masquer la vitesse
+        showPositions: false, // Masquer les positions
+        showAngleIndicator: false, // Masquer l'indicateur d'angle
         wireframeBackground: 'transparent' 
       }
     });
@@ -59,29 +59,30 @@ export default function useSkills() {
     const ground = Bodies.rectangle(width / 2, height, width, 10, {
       isStatic: true,
       render: {
-        visible: false
+        visible: false // Rendre le rectangle invisible
       }
     });
     const wallL = Bodies.rectangle(0, height / 2, 10, height, {
       isStatic: true,
       render: {
-        visible: false
+        visible: false // Rendre le rectangle invisible
       }
     });
     const wallR = Bodies.rectangle(width, height / 2, 10, height, {
       isStatic: true,
       render: {
-        visible: false
+        visible: false // Rendre le rectangle invisible
       }
     });
     
     World.add(engine.world, [ground, wallL, wallR]);
 
     
-    const bodies = words.map((word) => {
+    const bodies = words.map((word, index) => {
       const angle = (Math.random() - 0.5) * Math.PI / 4;
       const textRadius = 20;
       const textHeight = 40;
+      const textWidth = word.name.length * 10;
       const body = Bodies.rectangle(
         Math.random() * containerRef.current.clientWidth,
         Math.random() * -containerRef.current.clientHeight,
@@ -131,6 +132,9 @@ export default function useSkills() {
     };
   }, []);
 
+  return (
+   
+  );
+};
 
-  return { containerRef, canvasRef };
-}
+export default AnimationContainer;

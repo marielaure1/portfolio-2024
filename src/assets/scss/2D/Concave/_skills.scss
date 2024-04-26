@@ -3,7 +3,9 @@
     background: $cl-blue-light;
     width: 100%;
     aspect-ratio: 4/2;
+    max-height: 300px;
     position: relative;
+    overflow: hidden;
     
     &-item{
         display: inline-flex;
@@ -11,10 +13,14 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
-        border-radius: 30px;
         color: $cl-white;
         position: absolute;
-
+        word-break: keep-all;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        
         &.group1{
             background: $cl-purple-light;
         }
