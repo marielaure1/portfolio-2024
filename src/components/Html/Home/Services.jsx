@@ -2,24 +2,25 @@ import {useEffect, useState} from "react"
 import gsap from "gsap";
 import img from "@/assets/images/2.png";
 import { Icon } from '@iconify-icon/react';
+import Button from "@/components/Html/Button/Button.jsx";
 
 let projectsList = [
     {
-        title: "Site Vitrine",
+        title: "Youvence",
         tags: ["React.js", "Node.js", "MongoDb.js"],
         date: 2024,
         image: img,
         link: "/"
     },
     {
-        title: "Site Vitrine",
+        title: "The Prestige",
         tags: ["React.js", "Node.js", "MongoDb.js"],
         date: 2024,
         image: img,
         link: "/"
     },
     {
-        title: "Site Vitrine",
+        title: "Site",
         tags: ["React.js", "Node.js", "MongoDb.js"],
         date: 2024,
         image: img,
@@ -129,14 +130,14 @@ export default function Services(){
     
     return(
         <section className="services">
-            <h2 className="services-title title-section">Portfolio</h2>
+            <h2 className="services-title title-section-white">Portfolio</h2>
             <div className="services-table">
                 <div className="services-table-head">
                     <div className="services-table-head-cell">
                         <span className="table-title">Titre</span>
                     </div>
                     <div className="services-table-head-cell">
-                        <span className="table-title">Tags</span>
+                        <span className="table-title">Technologies</span>
                     </div>
                     <div className="services-table-head-cell">
                         <span className="table-title">Date</span>
@@ -166,6 +167,11 @@ export default function Services(){
                         </div>
                     </div>
                 ))}
+                <div className="services-table-footer">
+                    <Button className="btn-white" href="/portfolio">Voir plus</Button>
+                </div>
+
+               
             </div>
             {/* <div className="container">
                 <nav className="menu">

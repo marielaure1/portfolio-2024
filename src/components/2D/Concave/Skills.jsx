@@ -5,7 +5,7 @@ export default function Skills() {
 
 	return (
 		<div ref={containerRef} className='concave-skills'>
-			<canvas ref={canvasRef} style={{ position: 'absolute', top: '0', left: '0' }} />
+			<canvas ref={canvasRef}  />
 		</div>
 	);
 }

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Icon } from '@iconify-icon/react';
 
-export default function Button({className, children, handleClick = false, href = "/"}){
+export default function Button({className, children, handleClick = false, href = "/", ...props}){
     return(
         <>
             {handleClick && <span className={className} onClick={() => handleClick ? handleClick() : false}>{children}</span>}
             {!handleClick && (
-                <Link className={className} to={href}>
+                <Link className={className} to={href} {...props}>
                     <span className="btn-text">{children}</span>
                     <span className="btn-icons">
                         <Icon className="btn-icons-icon" icon="zondicons:arrow-left" />

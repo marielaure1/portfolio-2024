@@ -55,6 +55,17 @@
         overflow: hidden;
         position: relative;
 
+        &-canvas{
+            height: 100%;
+            width: 100%;
+            background-color: #f0cdf9;
+            
+            .canvas{  
+                height: 100%;
+                width: 100%;
+            }
+        }
+
         &-img{
             object-fit: cover;
             height: 100%;
@@ -135,4 +146,15 @@
     //         justify-content: center;
     //     }
     // }
+}
+
+@media (max-width: 992px){
+    .header{
+        grid-template-columns: 1fr;
+        height: fit-content;
+
+        &-right{
+            min-height: 400px;
+        }
+    }
 }

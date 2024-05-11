@@ -9,6 +9,7 @@ import "@/modules/crazy/Crazy.js"
 // import SplitType from 'split-type'
 
 import Skills from "@/components/2D/Concave/Skills.jsx";
+import RubiksCube from "@/components/3D/RubiksCube.jsx";
 // import Test from "@/components/2D/Concave/test.jsx";
 
 export default function Header(){
@@ -66,7 +67,10 @@ export default function Header(){
             </div>
 
             <div className="header-right">
-                <img src={img} alt="" className="header-right-img"/>
+                {/* <img src={img} alt="" className="header-right-img"/> */}
+                <div className="header-right-canvas">
+                    <RubiksCube/>
+                </div>
                 <div className="header-right-container">
                     <span className="header-right-container-scroll">Scroll</span>
                     <span>ou</span>

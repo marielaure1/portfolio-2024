@@ -7,3 +7,29 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes shape4 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(20deg);
+    }
+
+    30% {
+        transform: rotate(0deg);
+    }
+
+    45% {
+        transform: rotate(20deg);
+    }
+
+    60% {
+        transform: rotate(0deg) translateY(-20px);
+    }
+
+    100% {
+        transform:  translateY(0px);
+    }
+}

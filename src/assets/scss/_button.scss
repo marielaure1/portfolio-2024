@@ -47,6 +47,11 @@
             border-bottom-left-radius: 0;
             margin-left: -2px;
         }
+
+        &-icon{     
+            position: absolute;
+            transform: rotate(225deg);
+        }
     }
 }
 
@@ -61,6 +66,14 @@
     & .btn-text, & .btn-icons{
         background-color: $cl-black;
         color: $cl-white;
+    }
+}
+
+.btn-white{
+    @extend %btn-double;
+    & .btn-text, & .btn-icons{
+        background-color: $cl-white;
+        color: $cl-black;
     }
 }
 

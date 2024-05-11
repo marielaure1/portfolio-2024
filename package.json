@@ -16,6 +16,7 @@
     "@react-three/fiber": "^8.15.14",
     "fontfaceobserver": "^2.3.0",
     "gsap": "^3.12.5",
+    "lenis": "^1.0.44",
     "leva": "^0.9.35",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",
