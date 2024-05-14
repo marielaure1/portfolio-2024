@@ -26,10 +26,10 @@ const router = createBrowserRouter([
         }
       ]
     },
-    {
-      path: "/experience",
-      element: <ThreeJS/>,
-    }
+    // {
+    //   path: "/experience",
+    //   element: <ThreeJS/>,
+    // }
 ]);
 
 export default router;

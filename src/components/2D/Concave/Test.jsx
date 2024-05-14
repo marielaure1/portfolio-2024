@@ -8,6 +8,7 @@ const AnimationContainer = () => {
   const Render = Matter.Render;
   const World = Matter.World;
   const Bodies = Matter.Bodies;
+  const Events = Matter.Events;
 
   const words = [
     { id: 1, name: "React", group: 1, width: 100},
@@ -30,7 +31,6 @@ const AnimationContainer = () => {
     { id: 18, name: "Nest.js", group: 3, width: 100},
   ];
 
-
   useEffect(() => {
     const engine = Engine.create({});
     const render = Render.create({
@@ -41,14 +41,14 @@ const AnimationContainer = () => {
         height: containerRef.current.clientHeight,
         wireframes: false,
         background: 'transparent',
-        showAxes: false, // Masquer les axes
-        showCollisions: false, // Masquer les collisions
-        showDebug: false, // Masquer le débogage
-        showBroadphase: false, // Masquer la zone de détection des collisions
-        showBounds: false, // Masquer les limites
-        showVelocity: false, // Masquer la vitesse
-        showPositions: false, // Masquer les positions
-        showAngleIndicator: false, // Masquer l'indicateur d'angle
+        showAxes: false,
+        showCollisions: false,
+        showDebug: false,
+        showBroadphase: false,
+        showBounds: false,
+        showVelocity: false,
+        showPositions: false,
+        showAngleIndicator: false,
         wireframeBackground: 'transparent' 
       }
     });
@@ -59,19 +59,19 @@ const AnimationContainer = () => {
     const ground = Bodies.rectangle(width / 2, height, width, 10, {
       isStatic: true,
       render: {
-        visible: false // Rendre le rectangle invisible
+        visible: false
       }
     });
     const wallL = Bodies.rectangle(0, height / 2, 10, height, {
       isStatic: true,
       render: {
-        visible: false // Rendre le rectangle invisible
+        visible: false
       }
     });
     const wallR = Bodies.rectangle(width, height / 2, 10, height, {
       isStatic: true,
       render: {
-        visible: false // Rendre le rectangle invisible
+        visible: false
       }
     });
     
@@ -101,26 +101,41 @@ const AnimationContainer = () => {
       Matter.Body.setVelocity(body, { x: 0, y: Math.random() * 5 });
       World.add(engine.world, [body]);
 
-      const div = document.createElement('div');
+      const div = document.createElement('div'); 
       div.innerText = word.name;
       div.classList.add("concave-skills-item")
       div.classList.add("group"+word.group)
       div.style.width = word.width + 'px';
       div.style.height = textHeight + 'px';
-      div.style.left = `${body.position.x - 50}px`;
-      div.style.top = `${body.position.y - 20}px`;
+      div.style.left = `${body.position.x - div.clientWidth / 2}px`;
+      div.style.top = `${body.position.y - div.clientHeight / 2}px`;
       containerRef.current.appendChild(div);
       
       return { body, div };
     });
 
-    Matter.Events.on(engine, 'afterUpdate', () => {
+    
+
+    Events.on(engine, 'afterUpdate', () => {
       bodies.forEach(({ body, div }) => {
-        div.style.left = `${body.position.x - 50}px`;
-        div.style.top = `${body.position.y - 20}px`;
+        div.style.left = `${body.position.x - div.clientWidth / 2}px`;
+        div.style.top = `${body.position.y - div.clientHeight / 2}px`;
         div.style.transform = `rotate(${body.angle}rad)`; 
       });
     });
+
+    const mouse = Matter.Mouse.create(render.canvas);
+    const mouseConstraint = Matter.MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: {
+          visible: false
+        }
+      }
+    });
+
+    World.add(engine.world, mouseConstraint);
 
     Engine.run(engine);
     Render.run(render);
@@ -133,7 +148,9 @@ const AnimationContainer = () => {
   }, []);
 
   return (
-   
+    <div ref={containerRef} className='concave-skills'>
+      <canvas ref={canvasRef}  />
+    </div>
   );
 };
 

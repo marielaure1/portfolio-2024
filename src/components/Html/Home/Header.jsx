@@ -8,9 +8,9 @@ import "@/modules/crazy/Crazy.js"
 // import { gsap } from 'gsap'
 // import SplitType from 'split-type'
 
-import Skills from "@/components/2D/Concave/Skills.jsx";
+// import Skills from "@/components/2D/Concave/Skills.jsx";
 import RubiksCube from "@/components/3D/RubiksCube.jsx";
-// import Test from "@/components/2D/Concave/test.jsx";
+import Test from "@/components/2D/Concave/Test.jsx";
 
 export default function Header(){
 
@@ -63,7 +63,8 @@ export default function Header(){
                     Vel lectus nulla nam amet. A donec dignissim nisl porta tempus venenatis habitasse leo. 
                 </p>
 
-                <Skills/>
+                {/* <Skills/> */}
+                <Test/>
             </div>
 
             <div className="header-right">
