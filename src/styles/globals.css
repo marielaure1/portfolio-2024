@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}img,video{width:100%;vertical-align:middle}*,::after,::before{box-sizing:border-box}
+
+
+
+
+
+/**
+ * Home
+ */
+
+ /** Title */
+.title-regular{
+    @apply text-black text-[7vw] font-primary uppercase leading-none;
+}
+
+.title-thin{
+    @apply text-black text-[7vw] font-primary font-thin uppercase leading-none;
+}
+
+ @keyframes shape {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shape4 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(20deg);
+    }
+
+    30% {
+        transform: rotate(0deg);
+    }
+
+    45% {
+        transform: rotate(20deg);
+    }
+
+    60% {
+        transform: rotate(0deg) translateY(-20px);
+    }
+
+    100% {
+        transform:  translateY(0px);
+    }
+}
+
+
+.animation-shape1, .animation-shape2{
+    width: 8vw;
+    margin-left: 10px;
+    height: 8vw;  
+}
+
+.animation-shape1{
+    animation: shape 3s linear infinite alternate;
+}
+
+.animation-shape2{
+    animation: shape 1s linear infinite ;
+}
+
+.animation-shape1:hover, .animation-shape2:hover{
+    animation-play-state: paused;
+}
