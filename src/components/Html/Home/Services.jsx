@@ -1,85 +1,95 @@
 import {useEffect, useState} from "react"
 import gsap from "gsap";
-import img from "@/assets/images/2.png";
+import project1 from "@/assets/images/projects/project-1.png";
+import project2 from "@/assets/images/projects/project-2.png";
+import project3 from "@/assets/images/projects/project-3.png";
+import project4 from "@/assets/images/projects/project-4.png";
+import project5 from "@/assets/images/projects/project-5.png";
+import project6 from "@/assets/images/projects/project-6.png";
+import project7 from "@/assets/images/projects/project-7.png";
+import project8 from "@/assets/images/projects/project-8.png";
+import project9 from "@/assets/images/projects/project-9.png";
+import img from "@/assets/images/projects/project-1.png";
 import { Icon } from '@iconify-icon/react';
 import Button from "@/components/Html/Button/Button.jsx";
+import { Link } from "react-router-dom";
 
 let projectsList = [
     {
         title: "The Prestige",
         tags: ["Next.js", "Typescript", "Gsap"],
         date: 2024,
-        image: img,
-        link: "/"
+        image: project1,
+        link: "https://the-prestige.marie-laure-edjour.com/"
     },
     {
         title: "Genia",
         tags: ["Next.js", "Typescript"],
         date: 2024,
-        image: img,
-        link: "/"
+        image: project2,
+        link: "https://genia.marie-laure-edjour.com/"
     },
     {
         title: "Ramen Oshin",
         tags: ["Next.js", "Typescript"],
         date: 2024,
-        image: img,
+        image: project3,
         link: "https://ramen-oshin.marie-laure-edjour.com/"
     },
     {
+        title: "Zenflow - Application",
+        tags: ["React Native", "Typescript", "Supabase"],
+        date: 2024,
+        image: project5,
+        link: "https://github.com/marielaure1/ZenflowMobile"
+    },
+    {
+        title: "Zenflow - Api",
+        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        date: 2024,
+        image: project5,
+        link: "https://github.com/marielaure1/zenflow-api"
+    },
+    {
         title: "Youvence - Interface",
-        tags: ["React.js" ],
+        tags: ["Ionic" ],
         date: 2023,
-        image: img,
-        link: "/"
+        image: project4,
+        link: "https://github.com/marielaure1/youvence-application"
     },
     {
         title: "Youvence - Api",
         tags: ["Node.js", "Express", "Prisma"],
         date: 2023,
-        image: img,
-        link: "/"
-    },
-    {
-        title: "Zenflow - Application",
-        tags: ["React Native", "Typescript", "Supabase"],
-        date: 2023,
-        image: img,
-        link: "/"
-    },
-    {
-        title: "Zenflow - Api",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
-        date: 2023,
-        image: img,
-        link: "/"
+        image: project4,
+        link: "https://github.com/marielaure1/api"
     },
     {
         title: "Portfolio",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        tags: ["Next", "Typescript"],
         date: 2022,
-        image: img,
+        image: project6,
         link: "https://marie-laure-edjour.netlify.app/"
     },
     {
         title: "La Maison",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        tags: ["Html", "Javascript"],
         date: 2022,
-        image: img,
+        image: project7,
         link: "https://lamaison-agency.netlify.app/"
     },
     {
         title: "Reproduction de Tesla",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        tags: ["Html", "Javascript"],
         date: 2021,
-        image: img,
+        image: project8,
         link: "https://reproduction-tesla.netlify.app/"
     },
     {
         title: "Jeu du Morpion",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        tags: ["Html", "Javascript"],
         date: 2021,
-        image: img,
+        image: project9,
         link: "https://jeu-du-morpion.netlify.app/"
     }
 ]
@@ -197,7 +207,7 @@ export default function Services(){
                     <div className="services-table-head-cell"></div>
                 </div>
                 {projects.map((project) => (
-                    <a href={project.link} target="_blank"  className="services-table-body">
+                    <Link to={project.link} target="_blank"  className="services-table-body">
                         
                         
                         <div className="services-table-body-cell services-table-body-cell-img">
@@ -220,7 +230,7 @@ export default function Services(){
                                 <Icon className="btn-icons-icon" icon="zondicons:arrow-left" />
                             </span>
                         </div>
-                    </a>
+                    </Link>
                 ))}
                 {/* <div className="services-table-footer">
                     <Button className="btn-white" href="/portfolio">Voir plus</Button>
