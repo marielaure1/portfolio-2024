@@ -93,10 +93,11 @@
   position: fixed;
   left: 0;
   top: 0;
-    width: 200px;
-    aspect-ratio: 3/2;
-    pointer-events: none;
-    opacity: 0;
+  width: 200px;
+  // aspect-ratio: 3/2;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
     
   &-image{
     height: 100%;
