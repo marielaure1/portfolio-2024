@@ -70,7 +70,7 @@ export default function About(){
                 
             </div>
             <div className="about-cta">
-                    <Button className="btn-black" href="/CV-Marie-Laure-Edjour.pdf" target="_blank" download>Mon CV</Button>
+                    <Button className="btn-black" href="/CV-Marie-Laure-Edjour.pdf" target="_blank">Mon CV</Button>
                 </div>
         </section>
     )
