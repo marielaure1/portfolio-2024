@@ -2,6 +2,7 @@ import Button from "@/components/Html/Button/Button.jsx";
 import img from "@/assets/images/2.png";
 import shape1 from "@/assets/images/shape-1.svg";
 import shape2 from "@/assets/images/shape-2.svg";
+import bannerGif from "@/assets/images/banner-gif.gif";
 import {useEffect} from "react"
 // import {CrazyText} from "@/modules/crazy/Crazy.js"
 import "@/modules/crazy/Crazy.js"
@@ -47,73 +48,42 @@ export default function Header(){
     return(
         <header className="header">
 
-            <div className="header-left">
-                <h1 className="header-left-title crazy crazy-explode">
-                    Développeuse 
-                    <img src={shape2} alt="" className="header-left-title-shape1"/> <br/>
-                    <strong className="header-left-title-thin">
-                        Web Fullstack et <br/> mobile
-                    <img src={shape1} alt="" className="header-left-title-shape2"/>
-                    </strong>
-                    
+            <div className="header-top">
+                <h1 className="header-top-title crazy crazy-explode">
+                    <div className="header-top-title-line">
+                        <strong>Développeuse</strong> 
+                        <img src={shape2} alt="" className="header-top-title-shape1"/>
+                    </div> 
+                    <div className="header-top-title-line">
+                        <strong className="header-top-title-thin">Web</strong>
+                        <span>Fullstack</span>
+                        <strong className="header-top-title-thin">et</strong>
+                    </div>
+                    <div className="header-top-title-line">
+                        <strong className="header-top-title-thin">mobile</strong>
+                        <img src={shape1} alt="" className="header-top-title-shape2"/>
+                    </div>
                 </h1>
-
-                <p className="header-left-text">
-                    Lorem ipsum dolor sit amet consectetur. Luctus facilisi nisi purus consectetur pellentesque risus mus molestie. 
-                    Vel lectus nulla nam amet. A donec dignissim nisl porta tempus venenatis habitasse leo. 
-                </p>
-
-                {/* <Skills/> */}
-                <Test/>
             </div>
 
-            <div className="header-right">
-                {/* <img src={img} alt="" className="header-right-img"/> */}
-                <div className="header-right-canvas">
-                    <RubiksCube/>
-                </div>
-                <div className="header-right-container">
-                    <span className="header-right-container-scroll">Scroll</span>
-                    <span>ou</span>
-                    <Button className="btn-black" href="/">Contact</Button>
-
-                </div>
-            </div>
-
-            {/* <div className="header-top">
-                <div className="header-top-techno">
-                    <h2 className="header-top-techno-title">Développeuse <br/>FRONT</h2>
-                    <p className="header-top-techno-list">
-                        <strong>React</strong> JS,  
-                        <strong> Vue</strong> JS,  
-                        <strong> Next</strong> JS,  
-                        <strong> Three</strong> JS
-                    </p>
-                </div>
-
-                <div className="header-top-techno">
-                    <h2 className="header-top-techno-title">Développeuse <br/>BACK</h2>
-                    <p className="header-top-techno-list">
-                        <strong>Laravel</strong>, 
-                        <strong> Node</strong> JS, 
-                        <strong> Nest</strong> JS
-                    </p>
-                </div>
-
-                <div className="header-top-techno">
-                    <h2 className="header-top-techno-title">Développeuse <br/>MOBILE</h2>
-                    <p className="header-top-techno-list">
-                        <strong>Ionic</strong>, 
-                        <strong> React Native</strong>
-                    </p>
-                </div>
-            </div>
             <div className="header-bottom">
-                <h1 className="header-bottom-title"><strong className="strong">Développeuse</strong> Web Full Stack et Mobile</h1>
-                <div className="header-bottom-container">
-                    <Button className="header-bottom-container-btn btn-border-white" href="/experience">Expérience 3D</Button>
+                <Test/>
+                <div className="header-bottom-right">
+                    <div className="card-learn">
+                        <h3 className="card-learn-title">Mais je continue <br/> à apprendre</h3>
+
+                        <div className="card-learn-skills">
+                            <span className="card-learn-skills-left">Three.js</span>
+                            <span className="card-learn-skills-right">Blender</span>
+                        </div>
+                    </div>
+                    <div className="card-gif">
+                        <img src={bannerGif} alt="" className="card-gif-img"/>
+                    </div>
                 </div>
-            </div> */}
+            </div>
+
+          
         </header>
     )
 }

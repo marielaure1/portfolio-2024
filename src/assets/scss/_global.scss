@@ -11,7 +11,7 @@ a{
 
 .logo{
     font-family: $ff-secondary;
-    font-size: 32px;
+    font-size: 20px;
     text-transform: uppercase;
 }
 
@@ -44,6 +44,10 @@ text-transform: uppercase;
 
 @media (max-width: 576px) {
   .logo{
-    font-size: 20px;
+    font-size: 16px;
+  }
+
+  .title-section-stroke, .title-section-white, .title-section-black{
+    font-size: 30px;
   }
 }

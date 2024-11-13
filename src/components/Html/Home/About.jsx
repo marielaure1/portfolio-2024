@@ -6,6 +6,7 @@ import Lenis from 'lenis'
 import { gsap } from "gsap";
     
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {Icon} from "@iconify-icon/react";
 
 export default function About(){
 
@@ -32,30 +33,45 @@ export default function About(){
     
     return(
         <section className="about">
-            <img src={shape3} alt="" className="about-shape1"/> 
 
             <div className="about-container">
-                <div className="about-container-title">
+                {/* <div className="about-container-title">
                     <img src={shape4} alt="" className="about-container-title-shape4"/>
                     <h2 className="about-container-title-text title-section-black">A propos</h2>
-                </div>
+                </div> */}
 
                 <div className="about-container-paragraph">
-                    <h3 className="about-container-paragraph-title">Formations</h3>
                     <p className="about-container-paragraph-text">
-                        Felis dignissim tortor justo convallis tincidunt amet tincidunt risus non. Purus mi phasellus lobortis ornare. Odio sem fermentum vel risus nec sed. Hac massa diam tempus aenean donec nibh.
+                        Je m'appelle Marie-Laure Edjour,  
+                        <Icon icon="emojione-monotone:cat-face-with-wry-smile" className="about-icon"/> 
+                        développeuse fullstack et mobile  
+                        <Icon icon="mingcute:code-line"  className="about-icon"/>      
+                        . J'ai étudié à l'école Webstart 
+                        <Icon icon="gis:globe-smiley"  className="about-icon"/>     
+                        à Paris, où j'ai appris à maîtriser des technologies comme React.js, Vue.js, et Node.js. Je suis capable de gérer aussi bien la création d'interfaces utilisateur  
+                        <Icon icon="mingcute:paint-brush-fill"  className="about-icon"/>
+                        que la partie back-end
+                        <Icon icon="lets-icons:setting-line-light"  className="about-icon"/>
+                        des projets. 
                     </p>
                 </div>
                 <div className="about-container-paragraph">
-                    <h3 className="about-container-paragraph-title">Expériences</h3>
                     <p className="about-container-paragraph-text">
-                        Felis dignissim tortor justo convallis tincidunt amet tincidunt risus non. Purus mi phasellus lobortis ornare. Odio sem fermentum vel risus nec sed. Hac massa diam tempus aenean donec nibh.
+                    En tant que passionnée de développement  
+                    <Icon icon="fluent:flash-28-filled"  className="about-icon"/>    
+                    , je continue à apprendre chaque jour pour améliorer mes compétences
+                    <Icon icon="fluent:flash-28-filled"  className="about-icon"/>
+                    . Je suis à l'écoute et aime travailler en équipe   
+                    <Icon icon="fluent:flash-28-filled"  className="about-icon"/>     
+                    pour créer des solutions innovantes adaptées aux besoins des utilisateurs.
+                    <Icon icon="emojione-monotone:rocket"  className="about-icon"/>
                     </p>
                 </div>
-                <div className="about-container-cta">
+                
+            </div>
+            <div className="about-cta">
                     <Button className="btn-black" href="/CV-Marie-Laure-Edjour.pdf" target="_blank" download>Mon CV</Button>
                 </div>
-            </div>
         </section>
     )
 }

@@ -1,5 +1,5 @@
 // .title-section{
-//   color: $cl-white;
+//   color: $cl-black;
 //   font-family: Poppins;
 //   font-size: 74px;
 //   font-style: normal;
@@ -9,7 +9,7 @@
 // }
 
 .table-text{
-  color: $cl-white;
+  color: $cl-black;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -18,7 +18,7 @@
 }
 
 .table-title{
-  color: $cl-white;
+  color: $cl-black;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -29,12 +29,12 @@
 
 .tag{
   border-radius: 20px;
-  border: 1px solid #FFF;
+  border: 1px solid $cl-black;
   display: flex;
   padding: 10px;
   align-items: flex-start;
   gap: 10px;
-  color: #FFF;
+  color: $cl-black;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -42,11 +42,12 @@
   line-height: normal;
   height: fit-content;
   transition: 300ms all;
+  cursor:default;
 
 
   &:hover{
-    background: #BCA1E7;
-    border-color: #BCA1E7;
+    background: $cl-yellow-2;
+    border-color: $cl-yellow-2;
   }
 }
 
@@ -61,18 +62,19 @@
   gap: 10px;
   flex-shrink: 0;
   border-radius: 30px;
-  border: 1px solid var(--cl-white, #FFF);
+  border: 1px solid $cl-black;
   transition: 300ms all;
 
   .btn-icons-icon{
     font-size: 14px;
     transform: rotate(180deg);
-    color: $cl-white;
+    color: $cl-black;
     transition: 300ms all;
   }
 
   &:hover{
     background-color: $cl-white;
+    border: 1px solid $cl-white;
 
     .btn-icons-icon{
       transform: rotate(136deg);
@@ -105,7 +107,7 @@
 
 .services{
   padding: 100px 5vw;
-  background-color: $cl-black;
+  background-color: $cl-pink-2;
 
   &-title{
     margin-bottom: 100px;
@@ -117,9 +119,9 @@
     &-head{
       width: 100%;
       display: grid;
-      grid-template-columns: 200px 300px 1fr 1fr;
+      grid-template-columns: 100px 200px 1fr 1fr;
       gap: 10px;
-      border-bottom: 1.5px solid $cl-white;
+      border-bottom: 1.5px solid $cl-black;
 
       &-cell{
         padding: 15px 0;
@@ -129,9 +131,9 @@
     &-body{
       width: 100%;
       display: grid;
-      grid-template-columns: 200px 300px 1fr 1fr;
+      grid-template-columns: 100px 200px 1fr 1fr;
       gap: 10px;
-      border-bottom: 1.5px solid $cl-white;
+      border-bottom: 1.5px solid $cl-black;
       position: relative;
 
       &-cell{
@@ -141,10 +143,20 @@
         gap: 10px;
         align-items: center;
       }
+      
 
       &:hover{
         .tag{
-          border-color: #BCA1E7;
+          border-color: $cl-pink-3;
+          background-color:$cl-pink-3;
+          color: $cl-white;
+
+          &:hover{
+            &:hover{
+              background: $cl-yellow-2;
+              border-color: $cl-yellow-2;
+            }
+          }
         }
       }
     }
@@ -154,5 +166,69 @@
       justify-content: flex-end;
       padding-top: 50px;
     }
+  }
+}
+
+@media (max-width: 992px){
+  .services-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    &-head{
+      display: none;
+    }
+
+
+    &-body{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px 0;
+
+      &-cell{
+
+        &-title{
+          padding: 0;
+
+          .table-text{
+            font-size: 20px;
+          }
+        }
+        &-img{
+          position: relative;
+          padding: 0;
+
+          .table-text{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+          }
+          .table-wrapper{
+            position: static;
+            width: 100%;
+            opacity: 1;
+          }
+        }
+
+        &-tags{
+          padding: 0;
+        }
+
+        &.table-action{
+          padding: 0;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px){
+  .services-table{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

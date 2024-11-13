@@ -26,8 +26,8 @@ export default function Home(){
 	<div id="container"></div> */}
             {/* 
             <Skills/>
-            <Portfolio/>
-            <Contact/> */}
+            <Portfolio/> */}
+            <Contact/>
         </>
     )
 }

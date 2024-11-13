@@ -17,7 +17,7 @@ export default function Nav(){
                 <div className="menu-part">
                     <Logo/>
                 </div>
-                <div className="menu-part">
+                {/* <div className="menu-part">
                     <span className={`menu-part-btn ${activeMenu ? "active" :  ""}`} onClick={handleClickMenu}>
                         <span className="menu-part-btn-line1"></span>
                         <span className="menu-part-btn-line2"></span>
@@ -28,7 +28,7 @@ export default function Nav(){
                         <Icon icon="iconoir:sound-off" className="menu-part-audio-off"/>
                         <Icon icon="iconoir:sound-high" className="menu-part-audio-on"/>
                     </span>
-                </div>
+                </div> */}
             </nav>
         </>
     )
