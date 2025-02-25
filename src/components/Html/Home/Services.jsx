@@ -45,7 +45,7 @@ let projectsList = [
     },
     {
         title: "Zenflow - Api",
-        tags: ["Nest", "Typescript", "Supabase",  "MongoDb.js"],
+        tags: ["Nest.js", "Typescript", "Supabase",  "MongoDb"],
         date: 2024,
         image: project5,
         link: "https://github.com/marielaure1/zenflow-api"
@@ -97,27 +97,11 @@ let projectsList = [
 export default function Services(){
     const [projects, setProjects] = useState(projectsList);
 
-    
-
     useEffect(() => {
         if(window.matchMedia("(min-width: 992px)").matches){
             let size = {
                 width: window.innerWidth
             }
-    
-         
-            // gsap
-            // .timeline()
-            // .from(".services-table-body", {
-            //   delay: 1,
-            //   duration: 0.85,
-            //   x: 25,
-            //   y: 125,
-            //   stagger: 0.095,
-            //   skewY: gsap.utils.wrap([-8, 8]),
-            //   ease: "expo.out",
-            // })
-            // .set(".services-table", { pointerEvents: "all" });
           
           gsap.defaults({
             duration: 0.55,
@@ -125,55 +109,38 @@ export default function Services(){
           });
           
           const menuItems = document.querySelectorAll(".services-table-body");
-    
-        //   let previousImageX = 0;
-        //   let previousImageY = 0;
-          
           menuItems.forEach((item, i) => {
             const imageWrapper = item.querySelector(".table-wrapper");
             imageWrapper.style.width = size.width/ 4 + "px"
             const imageWrapperBounds = imageWrapper.getBoundingClientRect();
             let itemBounds = item.getBoundingClientRect();
+
+            if (i == 0) console.dir(item)
+            gsap.set(imageWrapper, {
+                right: 50,
+                y: item.offsetTop,
+            });
           
-            const onMouseEnter = ({x, y}) => {
-                console.log(size.width);
-                console.log(size.width  / 5);
+            const onMouseEnter = () => {
               gsap.set(imageWrapper, {
                 scale: 0.8,
-                x: 750,
-                y: y - 50,
                 rotation: -15,
               });
               gsap.to(imageWrapper, { opacity: 1, scale: 1, rotation: 0 });
             };
           
             const onMouseLeave = () => {
-                if(i == 0){
-                    gsap.to(imageWrapper, {
-                        opacity: 0,
-                        // yPercent: -50,
-                        // xPercent: 25,
-                        scale: 0.8,
-                        rotation: -15,
-                    });
-                } else {
-                    gsap.to(imageWrapper, {
-                        opacity: 0,
-                        y: 0,
-                        // xPercent: 40,
-                        scale: 0.8,
-                        rotation: -15,
-                    });
-                }
+                gsap.to(imageWrapper, {
+                    opacity: 0,
+                    scale: 0.8,
+                    rotation: -15,
+                });
             };
           
-            const onMouseMove = ({ x, y }) => {
-              let yOffset = itemBounds.top / imageWrapperBounds.height;
-              yOffset = gsap.utils.mapRange(0, 1.5, -50, 50, yOffset);
+            const onMouseMove = (e) => {
               gsap.to(imageWrapper, {
-                // duration: 1.25,
-                // x: 600,
-                y: y - 60 *0.5,
+                y: e.y - imageWrapperBounds.height / 2,
+                x: e.x - imageWrapperBounds.width / 2,
               });
             };
           
@@ -208,8 +175,6 @@ export default function Services(){
                 </div>
                 {projects.map((project) => (
                     <Link to={project.link} target="_blank"  className="services-table-body">
-                        
-                        
                         <div className="services-table-body-cell services-table-body-cell-img">
                             <span className="table-text">{project.date}</span>
                             <div className="table-wrapper">
@@ -232,98 +197,7 @@ export default function Services(){
                         </div>
                     </Link>
                 ))}
-                {/* <div className="services-table-footer">
-                    <Button className="btn-white" href="/portfolio">Voir plus</Button>
-                </div> */}
-
-               
             </div>
-            {/* <div className="container">
-                <nav className="menu">
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Zinjao</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Fastwired</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Jarritos</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Matt Smith</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Lizzy</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Okai</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">QuestR</span></span>
-                    </div>
-
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Weblogician</span></span>
-                    </div>
-                    <div className="menu__item">
-                    <div className="menu__item-image_wrapper">
-                        <div className="menu__item-image_inner">
-                        <img className="menu__item-image" src={img} />
-                        </div>
-                    </div>
-                    <span className="menu__item-text"
-                        ><span className="menu__item-innertext">Wallmats</span></span>
-                    </div>
-                </nav>
-            </div> */}
         </section>
     )
 }

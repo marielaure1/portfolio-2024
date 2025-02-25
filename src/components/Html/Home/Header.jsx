@@ -74,7 +74,7 @@ export default function Header(){
 
                         <div className="card-learn-skills">
                             <span className="card-learn-skills-left">Three.js</span>
-                            <span className="card-learn-skills-right">Blender</span>
+                            <span className="card-learn-skills-right">Python</span>
                         </div>
                     </div>
                     <div className="card-gif">
