@@ -93,8 +93,9 @@
   position: fixed;
   left: 0;
   top: 0;
+  // right: 50px;
   width: 200px;
-  // aspect-ratio: 3/2;
+  aspect-ratio: 3/2;
   z-index: 20;
   pointer-events: none;
   opacity: 0;
